@@ -1,67 +1,21 @@
-$(document).ready(function(){
+// CSS Styling by me
 
-	console.log($('.navlist li'));
+// Dropdown menu code from:
+// http://www.gethifi.com/blog/nicer-navigation-with-css-transitions
 
-/************************ to highlight on which section you are ****************/
 
-	$(".navlist li").click(function(){
-		$(this).addClass("iamselected");
-		$(".navlist li").not(this).removeClass("iamselected");  
+//Allow clicking instead of hover for the dropdown menu
+$(document).ready( function(){
+
+	$('#submenu').click( function(event){
+			event.stopPropagation();
+			$('#drop').toggle();
+	});
+	
+	$(document).click( function(){
+			$('#drop').hide();
 	});
 
-/********************* highlight active link when scrolled **************************/
-
-	$(window).scroll(function(){
-		console.log( $(this).scrollTop());
-		$('.page').each(function(){
-			var sectionoffset = $(this.hash).offset().top;   // saves dist of that hash trom top
-			if(sectionoffset <= $(this).scrollTop()){
-				$(this).addClass('iamselected');
-			}			
-
-		});
-	});
-
-
-/**************** to change from trans to black when scrolled *************/
-
-	console.log( $(document).scrollTop() );
-
-	$(document).scroll(function(){
-		if( $(document).scrollTop() > 95 )
-		{
-			$('.navwrapper').addClass("notonhomepage");
-			$('.logo').addClass("hideme");
-		}
-		else{
-			$('.navwrapper').removeClass("notonhomepage");
-			$('.logo').removeClass("hideme");
-		}
-
-	});
-/******************** hide n show nav *************************/
-
-	$('.toggleMenu').click(function(){
-		$('.sidemenu').addClass("showmenu");
-		$('.toggleMenu').addClass("changeopacity");
-	});
-
-	$('.cross').click(function(){
-		$('.sidemenu').removeClass("showmenu");
-		$('.toggleMenu').removeClass("changeopacity");
-	});
-
-/************************* menu scales when scrolled ****************************/
-	$(document).scroll(function(){
-		if( $(document).scrollTop() > 250 )
-		{
-			$('.mobilelogo').addClass("hideme");
-			$('.toggleMenu').css('padding','9px 12px 9px 9px');
-		}
-		else{
-			$('.mobilelogo').removeClass("hideme");
-			$('.toggleMenu').css('padding','15px 20px 15px 15px');
-		}
-
-	});
 });
+
+	
